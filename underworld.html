@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Underworld — Case Study</title>
+    <meta name="description" content="Case study for Underworld, a released Unity 2D pixel-art action-adventure platformer developed under Nitrous Studio." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .uw-hero {
+            display: grid;
+            gap: 26px;
+        }
+
+        .uw-cover-card,
+        .uw-section-card,
+        .uw-gallery-card {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .uw-cover-media {
+            position: relative;
+            min-height: 430px;
+            background:
+                    linear-gradient(180deg, rgba(4, 8, 14, 0.04), rgba(4, 8, 14, 0.54)),
+                    linear-gradient(135deg, #081019 0%, #101b2c 38%, #111221 100%);
+        }
+
+        .uw-cover-media img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .uw-cover-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                    linear-gradient(180deg, rgba(6, 9, 14, 0.02) 0%, rgba(6, 9, 14, 0.18) 34%, rgba(6, 9, 14, 0.82) 100%),
+                    radial-gradient(circle at 76% 22%, rgba(57, 178, 255, 0.18), transparent 18%);
+            z-index: 1;
+        }
+
+        .uw-cover-content {
+            position: absolute;
+            left: 28px;
+            right: 28px;
+            bottom: 26px;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+        }
+
+        .uw-cover-copy {
+            max-width: 700px;
+        }
+
+        .uw-cover-copy h1 {
+            max-width: none;
+            font-size: clamp(2.5rem, 5vw, 4.8rem);
+            margin-top: 10px;
+        }
+
+        .uw-cover-copy p {
+            margin-top: 14px;
+            max-width: 60ch;
+            color: #d6e1f1;
+            font-size: 1.03rem;
+        }
+
+        .uw-cover-side {
+            min-width: 220px;
+            padding: 16px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.09);
+            background: rgba(8, 12, 18, 0.58);
+            backdrop-filter: blur(10px);
+        }
+
+        .uw-cover-side .label {
+            display: block;
+            color: var(--accent-2);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .uw-cover-side strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .uw-cover-side p {
+            color: #c8d4e7;
+            font-size: 0.94rem;
+        }
+
+        .uw-overview-grid,
+        .uw-tech-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+        }
+
+        .uw-section-card {
+            padding: 26px;
+        }
+
+        .uw-section-card p + p {
+            margin-top: 16px;
+        }
+
+        .uw-facts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .uw-facts div {
+            padding: 16px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.025);
+        }
+
+        .uw-facts span {
+            display: block;
+            color: var(--muted-2);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+
+        .uw-facts strong {
+            display: block;
+            color: var(--text);
+            font-size: 0.98rem;
+            line-height: 1.35;
+        }
+
+        .uw-list {
+            margin: 18px 0 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+
+        .uw-list li + li {
+            margin-top: 10px;
+        }
+
+        .uw-gallery-card {
+            padding: 24px;
+        }
+
+        .uw-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .uw-shot {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .uw-shot img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            background: #0b1018;
+        }
+
+        .uw-shot-caption {
+            padding: 12px 14px 14px;
+        }
+
+        .uw-shot-caption strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.96rem;
+        }
+
+        .uw-shot-caption p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 980px) {
+            .uw-cover-content,
+            .uw-overview-grid,
+            .uw-tech-grid,
+            .uw-gallery-grid {
+                grid-template-columns: 1fr;
+                display: grid;
+            }
+
+            .uw-cover-content {
+                align-items: end;
+            }
+
+            .uw-cover-side {
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .uw-cover-media {
+                min-height: 500px;
+            }
+
+            .uw-cover-content {
+                left: 18px;
+                right: 18px;
+                bottom: 18px;
+            }
+
+            .uw-section-card,
+            .uw-gallery-card {
+                padding: 20px;
+            }
+
+            .uw-facts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-noise"></div>
+<div class="page-glow glow-1"></div>
+<div class="page-glow glow-2"></div>
+
+<header class="site-header">
+    <div class="container nav">
+        <a href="index.html" class="brand">
+            <span class="brand-title">Olivier Trudel</span>
+            <span class="brand-subtitle">Underworld · Case Study</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="prototypes.html">Prototypes</a>
+            <a href="devlog.html">Devlog</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+</header>
+
+<main class="section">
+    <div class="container uw-hero">
+        <section class="uw-cover-card reveal">
+            <div class="uw-cover-media">
+                <img src="https://img.itch.zone/aW1nLzI2NTIwNTExLnBuZw%3D%3D/original/fd6zIf.png" alt="Underworld cover art" />
+                <div class="uw-cover-overlay"></div>
+                <div class="uw-cover-content">
+                    <div class="uw-cover-copy">
+                        <p class="eyebrow">Unity · Released Game · 2D Pixel-Art Action Adventure</p>
+                        <h1>Underworld</h1>
+                        <p>
+                            A released sci-fi action-platformer built around exploration, precise melee combat, atmosphere,
+                            and a strong comic-book style identity. Underworld presents a darker descent-driven world while
+                            staying readable, playable, and production-minded.
+                        </p>
+                        <div class="project-tags case-hero-tags" style="margin-top:18px;">
+                            <span>Unity</span>
+                            <span>C#</span>
+                            <span>2D Platformer</span>
+                            <span>Pixel Art</span>
+                            <span>Released on itch.io</span>
+                        </div>
+                    </div>
+
+                    <aside class="uw-cover-side">
+                        <span class="label">Project status</span>
+                        <strong>Public released build</strong>
+                        <p>Browser-playable and positioned as a full player-facing game, not just an internal prototype.</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="uw-overview-grid">
+            <article class="uw-section-card reveal">
+                <p class="case-kicker">Game overview</p>
+                <h2>Fiction first, grounded by production</h2>
+                <p>
+                    Underworld is a 2D pixel-art action-adventure platformer set in a haunting sci-fi realm deep beneath the surface.
+                    You play as a nano-enhanced swordsman, awakened by a mysterious AI after being left for dead in the ruins of a
+                    forgotten world. From there, the game pushes a clear fantasy: descend deeper, survive hostile spaces, and uncover
+                    what happened to this corrupted underworld.
+                </p>
+                <p>
+                    The tone stays close to the public game pitch: nonlinear exploration, dangerous creatures, hidden paths, upgrades,
+                    and a more deliberate combat rhythm inspired by Metroidvania structure and Souls-like pressure. The result feels
+                    moody and stylized rather than retro for its own sake.
+                </p>
+                <div class="hero-actions" style="margin-top:24px;">
+                    <a href="https://nitrous-studio.itch.io/underworld" class="btn btn-primary">View on itch.io</a>
+                    <a href="projects.html" class="btn btn-secondary">Back to Projects</a>
+                </div>
+            </article>
+
+            <article class="uw-section-card reveal">
+                <p class="case-kicker">Project snapshot</p>
+                <h2>What this project signals</h2>
+                <div class="uw-facts">
+                    <div>
+                        <span>Engine</span>
+                        <strong>Unity production workflow</strong>
+                    </div>
+                    <div>
+                        <span>Programming</span>
+                        <strong>C# gameplay and menu-side implementation</strong>
+                    </div>
+                    <div>
+                        <span>Genre</span>
+                        <strong>2D action-platformer with exploration and combat</strong>
+                    </div>
+                    <div>
+                        <span>Portfolio value</span>
+                        <strong>Strong shipped-game credibility and player-facing finish</strong>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="uw-tech-grid">
+            <article class="uw-section-card reveal">
+                <p class="case-kicker">Production and systems</p>
+                <h2>Technical side of the game</h2>
+                <p>
+                    The important technical value of Underworld is that it brings multiple gameplay and presentation layers together
+                    into a coherent public build. This is not just a visual mockup. It is a real game page backed by a playable release,
+                    which means interaction, pacing, UI, combat clarity, and general usability had to hold up under actual players.
+                </p>
+                <ul class="uw-list">
+                    <li><strong>Unity + C# development:</strong> gameplay code and feature integration in a practical shipped-game context.</li>
+                    <li><strong>2D platformer structure:</strong> player movement, traversal flow, enemy encounters, and map progression working as one loop.</li>
+                    <li><strong>Comic-book story framing:</strong> stylized narrative presentation used to establish tone and identity early.</li>
+                    <li><strong>Combat FSM boss logic:</strong> encounter behavior built around readable state-driven combat and multi-phase pressure.</li>
+                    <li><strong>Store and menu layer:</strong> player-facing interface work, navigation, and supporting UX needed for a complete build.</li>
+                    <li><strong>Camera work:</strong> moment-to-moment readability depends heavily on follow behavior, framing, and platforming clarity.</li>
+                </ul>
+            </article>
+
+            <article class="uw-section-card reveal">
+                <p class="case-kicker">Why it matters</p>
+                <h2>Professional value in the portfolio</h2>
+                <p>
+                    Underworld works well in the portfolio because it is concrete. Recruiters can immediately understand the project,
+                    see the fiction, read the technical scope, and verify that it shipped. That makes it a strong complement to my more
+                    architecture-heavy projects: one shows system ambition, the other shows that I can help bring a real game across the line.
+                </p>
+                <ul class="uw-list">
+                    <li>Finished public result instead of a half-explained prototype.</li>
+                    <li>Clear overlap between design sensibility and implementation discipline.</li>
+                    <li>Good signal for gameplay programming, integration, and production reliability.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="uw-gallery-card reveal">
+            <p class="case-kicker">Screenshots</p>
+            <h2>Selected in-game views</h2>
+            <p style="margin-top:12px; max-width:72ch;">
+                A few screens are enough here. They reinforce atmosphere, readability, and the kind of player-facing presentation the project delivers.
+            </p>
+
+            <div class="uw-gallery-grid">
+                <figure class="uw-shot">
+                    <img src="https://img.itch.zone/aW1hZ2UvMzg2Njk1My8yNDk4NzAxMy5qcGc%3D/347x500/RjhXNV.jpg" alt="Underworld gameplay screenshot showing atmospheric platforming" />
+                    <figcaption class="uw-shot-caption">
+                        <strong>Atmosphere and traversal</strong>
+                        <p>Strong silhouette work, moody lighting, and a readable 2D layout that supports exploration.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="uw-shot">
+                    <img src="https://img.itch.zone/aW1hZ2UvMzg2Njk1My8yNDk4NzAxNC5qcGc%3D/347x500/xtwa1T.jpg" alt="Underworld gameplay screenshot showing interaction prompt and level scene" />
+                    <figcaption class="uw-shot-caption">
+                        <strong>World interaction</strong>
+                        <p>Environmental framing and interaction cues help keep the sci-fi underworld legible and grounded.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="uw-shot">
+                    <img src="https://img.itch.zone/aW1hZ2UvMzg2Njk1My8yNDk4NzAxNS5qcGc%3D/347x500/W8RUuv.jpg" alt="Underworld gameplay screenshot showing combat-oriented side view" />
+                    <figcaption class="uw-shot-caption">
+                        <strong>Combat readability</strong>
+                        <p>HUD, screen composition, and combat space all support a more deliberate action-platformer rhythm.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p>Underworld case study</p>
+        <a href="index.html" class="back-top">Back home</a>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devlog — Olivier Trudel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-noise"></div>
+
+<header class="site-header">
+    <div class="container nav">
+        <a href="index.html" class="brand">
+            <span class="brand-title">Olivier Trudel</span>
+            <span class="brand-subtitle">Technical Devlog</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="prototypes.html">Prototypes</a>
+            <a href="devlog.html">Devlog</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+</header>
+
+<main class="section">
+    <div class="container">
+        <div class="page-intro reveal">
+            <p class="eyebrow">Writing</p>
+            <h1 class="page-title">Technical Devlog</h1>
+            <p class="page-subtitle">
+                Process notes, architecture breakdowns, implementation decisions, and technical studies.
+            </p>
+        </div>
+
+        <div class="devlog-list large-devlog-list">
+            <article class="devlog-card reveal">
+                <div class="devlog-meta">
+                    <span>Fragments of the CodeX</span>
+                    <span>UE5</span>
+                    <span>Framework Design</span>
+                </div>
+                <h3><a href="fragments-codex.html">Designing a Combat / Orchestration Framework for a Vertical Slice</a></h3>
+                <p>
+                    Separating orchestration, gameplay flow, traversal, and encounter behavior into reusable systems.
+                </p>
+            </article>
+
+            <article class="devlog-card reveal">
+                <div class="devlog-meta">
+                    <span>Underworld</span>
+                    <span>Production</span>
+                    <span>Released Game</span>
+                </div>
+                <h3><a href="underworld.html">From Prototype to Shipping: What Underworld Taught Me</a></h3>
+                <p>
+                    A retrospective on finishing a game project, prioritization, collaboration, and what matters most in execution.
+                </p>
+            </article>
+
+            <article class="devlog-card reveal">
+                <div class="devlog-meta">
+                    <span>SPH</span>
+                    <span>Physics</span>
+                    <span>Numerical Methods</span>
+                </div>
+                <h3>SPH vs Eulerian Fluids: Practical Tradeoffs</h3>
+                <p>
+                    Notes on stability, implementation effort, visualization, and what each formulation makes easier.
+                </p>
+            </article>
+
+            <article class="devlog-card reveal">
+                <div class="devlog-meta">
+                    <span>Protocol Exodus</span>
+                    <span>AI</span>
+                    <span>Pathfinding</span>
+                </div>
+                <h3>Congestion, Occupancy, and Unit Coordination</h3>
+                <p>
+                    An exploration of why large groups fail to move well and how to think about scalable fixes.
+                </p>
+            </article>
+
+            <article class="devlog-card reveal">
+                <div class="devlog-meta">
+                    <span>Prototypes</span>
+                    <span>Rendering</span>
+                    <span>WebGL</span>
+                </div>
+                <h3>Why Small Graphics Experiments Still Matter</h3>
+                <p>
+                    Using short prototype cycles to test ideas in rendering, math visualization, and realtime feedback.
+                </p>
+            </article>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p>Technical devlog</p>
+        <a href="index.html" class="back-top">Back home</a>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
