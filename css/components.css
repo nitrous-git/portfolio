@@ -353,9 +353,9 @@
 
 .media-aeon {
     background:
-            radial-gradient(circle at 64% 34%, rgba(255, 190, 120, 0.30), transparent 18%),
-            radial-gradient(circle at 38% 54%, rgba(87, 213, 255, 0.22), transparent 20%),
-            linear-gradient(140deg, #121724 0%, #22314f 42%, #17111f 100%);
+            radial-gradient(circle at 64% 34%, rgb(243, 207, 12), transparent 18%),
+            radial-gradient(circle at 38% 54%, rgba(255, 252, 228, 0.84), transparent 20%),
+            linear-gradient(140deg, #121724 0%, #f6dd2a 42%, #17111f 100%);
 }
 
 .case-list {

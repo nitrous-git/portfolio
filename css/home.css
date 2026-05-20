@@ -250,10 +250,51 @@
     min-height: 100%;
 }
 
+
+
+
+/* ------------------------
+Image visual for home page.
+The visual stack :
+    z-index 4  media label
+    z-index 3  shine
+    z-index 2  inner border/frame
+    z-index 1  dark overlay
+    z-index 0  image with opacity
+    background .media-underworld / .media-fragments
+------------------------ */
+
 .home-work-media {
     position: relative;
     min-height: 315px;
     overflow: hidden;
+    isolation: isolate;
+}
+
+.home-work-media .media-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+    opacity: 0.86;
+
+    transform: scale(1.01);
+    transition:
+            transform 220ms ease,
+            opacity 220ms ease,
+            filter 220ms ease;
+}
+
+.home-work-card:hover .media-image {
+    transform: scale(1.045);
+    opacity: 0.40;
 }
 
 .home-work-media::before,
@@ -265,17 +306,33 @@
 
 .home-work-media::before {
     inset: 26px;
+    z-index: 2;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 22px;
 }
 
 .home-work-media::after {
-    left: 22px;
-    right: 22px;
-    bottom: 22px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    inset: 0;
+    z-index: 1;
+
+    background:
+            linear-gradient(180deg, rgba(5, 8, 12, 0.02), rgba(5, 8, 12, 0.36)),
+            radial-gradient(circle at 50% 20%, transparent 0%, rgba(0, 0, 0, 0.18) 78%);
 }
+
+.home-work-media .project-shine {
+    position: absolute;
+    z-index: 3;
+}
+
+.home-work-media .media-label {
+    position: absolute;
+    z-index: 4;
+}
+
+/* ------------------------ */
+
+
 
 .home-work-body {
     padding: 24px;
